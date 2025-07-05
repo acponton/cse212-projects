@@ -8,13 +8,21 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
+        // TO DO Problem 1 Start
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        double[] multiples = new double[length]; //new array of doubles to hold the multiples.
+
+        for (int i = 0; i < length; i++) // loop from 0 to -1
+        {
+            multiples[i] = number * (i + 1); // Calculate the multiple.
+        }
+
+        return multiples; // replace this return statement with your own
     }
+
 
     /// <summary>
     /// Rotate the 'data' to the right by the 'amount'.  For example, if the data is 
@@ -29,5 +37,11 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        amount = amount % data.Count;
+        List<int> tail = data.GetRange(data.Count - amount, amount); //get the last "amount" elements from the list
+        data.RemoveRange(data.Count - amount, amount); // remove the elements from the end of the original list
+        data.InsertRange(0, tail); //insert the "tail" elements at the front of the list (index 0)
+
     }
 }

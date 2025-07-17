@@ -14,6 +14,7 @@ public class CustomerService {
         // Scenario: 
         // Expected Result: 
         Console.WriteLine("Test 1");
+        
 
         // Defect(s) Found: 
 
@@ -23,7 +24,6 @@ public class CustomerService {
         // Scenario: 
         // Expected Result: 
         Console.WriteLine("Test 2");
-
         // Defect(s) Found: 
 
         Console.WriteLine("=================");
@@ -88,10 +88,16 @@ public class CustomerService {
     /// Dequeue the next customer and display the information.
     /// </summary>
     private void ServeCustomer() {
+        if (_queue.Count == 0)
+        {
+            Console.WriteLine("No customer in queue");
+            return;
+        }
         _queue.RemoveAt(0);
         var customer = _queue[0];
         Console.WriteLine(customer);
     }
+    
 
     /// <summary>
     /// Support the WriteLine function to provide a string representation of the
@@ -100,7 +106,8 @@ public class CustomerService {
     /// see the contents.
     /// </summary>
     /// <returns>A string representation of the queue</returns>
-    public override string ToString() {
+    public override string ToString()
+    {
         return $"[size={_queue.Count} max_size={_maxSize} => " + string.Join(", ", _queue) + "]";
     }
 }
